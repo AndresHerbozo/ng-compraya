@@ -1,0 +1,35 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 145px;
+    background: #fdd835 !important;
+}
+.footer-container {
+    max-width: 1330px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.footer .p-grid {
+    margin-bottom: 0px !important;
+}
+.mail {
+    display: flex;
+    align-items: center;
+    background-color: #dd2c00;
+    padding: 7px;
+    color: #ffffff;
+    border-radius: 7px;
+    height: 30px;
+    width: 180px !important;
+}
+.atention {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+.atention p {
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+}

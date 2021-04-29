@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    padding-right: 0 !important;
+    overflow-y: auto !important;
+    font-family: Roboto;
+}
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+body::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+body:-webkit-scrollbar-track:hover,
+body::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+}
+
+.white-text {
+    color: #ffffff;
+}
+.bold {
+    font-weight: bold;
+}
+.pd-10 {
+    padding: 10px !important;
+}
+.ft-sz-13 {
+    font-size: 13px !important;
+}
+.tiny {
+    font-size: 1rem !important;
+}
+.mr-end-10 {
+    margin-block-end: 10px;
+}
