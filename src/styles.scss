@@ -1,3 +1,5 @@
+@import "scss/materialize";
+
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
@@ -31,7 +33,6 @@ body:-webkit-scrollbar-track:hover,
 body::-webkit-scrollbar-track:active {
     background: #d4d4d4;
 }
-
 .white-text {
     color: #ffffff;
 }
@@ -41,12 +42,72 @@ body::-webkit-scrollbar-track:active {
 .pd-10 {
     padding: 10px !important;
 }
+.pd-l-0 {
+    padding-left: 0px !important;
+}
+.pd-r-90 {
+    padding-right: 90px !important;
+}
+.pd-1-rem {
+    padding: 1rem 1rem;
+}
 .ft-sz-13 {
     font-size: 13px !important;
+}
+.ft-sz-15 {
+    font-size: 15px !important;
+}
+.ft-sz-18 {
+    font-size: 18px !important;
 }
 .tiny {
     font-size: 1rem !important;
 }
+.mr-15 {
+    margin: 15px !important;
+}
+.mr-t-15 {
+    margin-top: 15px !important;
+}
+.mr-l-15 {
+    margin-left: 15px !important;
+}
+.mr-r-15 {
+    margin-right: 15px !important;
+}
+.mr-b-15 {
+    margin-bottom: 15px !important;
+}
 .mr-end-10 {
     margin-block-end: 10px;
+}
+.mr-t-d-20 {
+    margin-top: -20px !important;
+}
+.mr-t-2 {
+    margin-top: 2px !important;
+}
+.mr-t-15 {
+    margin-top: 15px !important;
+}
+.mr-l-d-60 {
+    margin-left: -60px !important;
+}
+.mr-block-start-0 {
+    margin-block-start: 0px;
+}
+.mr-block-end-0 {
+    margin-block-end: 0px;
+}
+.bg-red {
+    background: #dd2c00 !important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+:host ::ng-deep {
+    .width-224 {
+        width: 224px !important;
+    }
 }

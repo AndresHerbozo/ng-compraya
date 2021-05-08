@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { BadgeModule } from 'primeng/badge';
+
 import { CyHeaderComponent } from './cy-header/cy-header.component';
 import { CyFooterComponent } from './cy-footer/cy-footer.component';
-
-
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CyFooterComponent } from './cy-footer/cy-footer.component';
     CyFooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BadgeModule
   ],
   exports: [
     CyHeaderComponent,

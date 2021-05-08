@@ -1,0 +1,57 @@
+<div class="row breadcrumb-container">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<div class="card">
+    <p-orderList [value]="listOrders" [listStyle]="{'max-height':'30rem'}" header="Mis Pedido" [dragdrop]="false">
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="image-container">
+                    <img [src]="product.image" [alt]="product.name" class="product-image" />
+                </div>
+                <div class="product-list-detail">
+                    <h2 class="p-mb-2">{{ product.name }}</h2>
+                    <span class="product-category">{{ product.detail }}</span>
+                </div>
+                <div class="product-list-action">
+                    <h4 class="p-mb-2">Cantidad: {{ product.count }}</h4>
+                    <h4 class="p-mb-2 mr-t-2 ft-sz-18">Precio Total: S/. {{ product.subPrice }}</h4>
+                </div>
+            </div>
+        </ng-template>
+    </p-orderList>
+    <form [formGroup]="shopBagsForm" (ngSubmit)="onSaveOrder()">
+        <div class="row">
+            <h2>Confirmar Pedidos</h2>
+        </div>
+        <div class="row">
+            <div class="col s12 l3">
+                <input type="text" pInputText formControlName="lastFatherNameClient" class="p-inputtext-sm" placeholder="Apellido Pat.">
+            </div>
+            <div class="col s12 l3">
+                <input type="text" pInputText formControlName="lastMotherNameClient" class="p-inputtext-sm" placeholder="Apellido Mat.">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l3">
+                <input type="text" pInputText formControlName="nameClient" class="p-inputtext-sm" placeholder="Nombres">
+            </div>
+            <div class="col s12 l3">
+                <input type="number" pInputText formControlName="documentClient" class="p-inputtext-sm" placeholder="Nro Documento">
+            </div>
+        </div>
+        <div class="row">
+            <h2>Recoger en Tienda</h2>
+        </div>
+        <div class="row">
+            <div class="col s12 l3">
+                <p-dropdown [options]="shopPoints" formControlName="favoriteShopPoint" placeholder="Tiendas Recojo" optionLabel="name">
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <button pButton pRipple type="submit" label="Confirmar" class="p-button-success p-mr-2" icon="pi pi-check" iconPos="left"></button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -5,8 +5,14 @@
 }
 .main-form {
     padding: 10px;
-    padding-bottom: 145px;
+    padding-bottom: 140px;
 }
 .main-form > section {
     padding-bottom: 20px;
+}
+@media (max-width: 950px) {
+    .main-form {
+        padding: 10px;
+        padding-bottom: 195px;
+    }
 }

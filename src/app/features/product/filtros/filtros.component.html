@@ -1,0 +1,31 @@
+<p-sidebar [(visible)]="visible" position="top" [baseZIndex]="10000" (onHide)="onCloseFilters()">
+    <form [formGroup]="filtersForm" (ngSubmit)="onFilter()">
+        <div class="row">
+            <div class="col s12 l3">
+                <p-dropdown [options]="categories" formControlName="category" placeholder="Categorias"
+                    optionLabel="name">
+                </p-dropdown>
+            </div>
+            <div class="col s12 l3">
+                <p-dropdown [options]="dep_subcategories" formControlName="dep_subcategory" placeholder="Sub Categoría"
+                    optionLabel="name">
+                </p-dropdown>
+            </div>
+            <div class="col s12 l3">
+                <p-dropdown [options]="brands" formControlName="brand" placeholder="Marca" optionLabel="name">
+                </p-dropdown>
+            </div>
+            <div class="col s12 l3 mr-t-d-20">
+                <h4>Precio entre: S/. {{ rangeValues[0] }}.00 - S/. {{ rangeValues[1] }}.00</h4>
+                <p-slider formControlName="priceRange" [range]="true" [min]="1" [max]="20"></p-slider>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12"></div>
+            <div class="col s12 p-d-flex p-jc-end mr-l-d-60">
+                <button pButton pRipple type="button" label="Quitar Filtros" class="p-button-warning p-mr-2" icon="pi pi-times" iconPos="left" (click)="resetFilters()"></button>
+                <button pButton pRipple type="submit" label="Aplicar Filtros" class="p-button-success p-mr-2" icon="pi pi-check" iconPos="left"></button>
+            </div>
+        </div>
+    </form>
+</p-sidebar>

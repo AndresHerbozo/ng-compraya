@@ -1,0 +1,22 @@
+:host ::ng-deep {
+    .card {
+        max-width: 1330px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
+        background: #dd2c00 !important;
+    }
+    .breadcrumb-container {
+        max-width: 1330px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+.card {
+    padding: 2rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}

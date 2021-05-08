@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header-container">
-        <div class="p-grid">
-            <div class="p-col header-brand-nav">
+        <div class="row">
+            <div class="col s9 xl6 header-brand-nav">
                 <div class="header-brand">
                     <div class="header-isotipo">
                         <img src="../../../assets/compraya.png" alt="" height="40px">
@@ -10,6 +10,10 @@
                         <span class="font-logo">Compra Ya!</span>
                     </div>
                 </div>
+            </div>
+            <div class="col s3 l6 mr-t-15 p-d-flex p-jc-end cursor-pointer">
+                <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="countOrders"
+                    severity="danger" (click)="onLaunchShopBag()"></i>
             </div>
         </div>
     </div>

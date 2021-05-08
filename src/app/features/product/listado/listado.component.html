@@ -1,0 +1,113 @@
+<shop-filtros [visible]="visibleFilters" (filterValues)="onFilterSearch($event)" (close)="visibleFilters = $event">
+</shop-filtros>
+<div class="card">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between" *ngIf="isLoading">
+        <p-skeleton size="3rem" styleClass="mr-15"></p-skeleton>
+        <p-skeleton width="14rem" height="4rem" styleClass="mr-t-15 mr-b-15"></p-skeleton>
+        <div class="p-d-flex p-flex-row">
+            <p-skeleton size="3rem" styleClass="mr-t-15 mr-b-15"></p-skeleton>
+            <p-skeleton size="3rem" styleClass="mr-t-15 mr-b-15 mr-r-15"></p-skeleton>
+        </div>
+    </div>
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between" *ngIf="isLoading">
+        <div class="p-col-12 p-md-3 pd-10" *ngFor="let i of templateSkeleton">
+            <p-skeleton width="100%" height="436px" styleClass="mr-t-15 mr-b-15"></p-skeleton>
+        </div>
+    </div>
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between" *ngIf="isLoading">
+        <div class="p-col-12 p-md-3 pd-10" *ngFor="let i of templateSkeleton">
+            <p-skeleton width="100%" height="436px" styleClass="mr-t-15 mr-b-15"></p-skeleton>
+        </div>
+    </div>
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between" *ngIf="isLoading">
+        <div class="p-col-12 p-md-3 pd-10" *ngFor="let i of templateSkeleton">
+            <p-skeleton width="100%" height="436px" styleClass="mr-t-15 mr-b-15"></p-skeleton>
+        </div>
+    </div>
+    <p-dataView #dv [value]="products" [paginator]="true" [rows]="12" filterBy="name" [sortField]="sortField"
+        [sortOrder]="sortOrder" layout="grid" *ngIf="!isLoading">
+        <ng-template pTemplate="header">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                <p-button type="button" (click)="onLaunchFilters()" icon="pi pi-bars" styleClass="bg-red"></p-button>
+                <p-dropdown [options]="sortOptions" placeholder="Filtra por precio" (onChange)="onSortChange($event)"
+                    styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="listItem">
+            <div class="p-col-12">
+                <div class="product-list-item">
+                    <img [src]="product.image" [alt]="product.name" class="cursor-pointer"
+                        (click)="onClickDetail(product.productId)" />
+                    <div class="product-list-detail">
+                        <i class="pi pi-tag product-category-icon"></i>
+                        <span class="product-category">{{product.category.name}}</span>
+                        <div class="product-name">{{product.name}}</div>
+                        <div class="product-description">{{product.detail}}</div>
+                        <i class="pi pi-info-circle product-offer-icon" *ngIf="product.price.type == 2"></i>
+                        <span class="product-offer"
+                            *ngIf="product.price.type == 2">{{product.price.descriptionType}}</span>
+                    </div>
+                    <div class="product-list-action">
+                        <span class="product-price">S/. {{product.price.price}}</span>
+                        <p-button icon="pi pi-shopping-cart" label="Agregar" [disabled]="product.initialReal === 0"
+                            (click)="showConfirmProduct(product.productId)">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="gridItem">
+            <div class="p-col-12 p-md-3 pd-10">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{product.category.name}}</span>
+                        </div>
+                        <div *ngIf="product.price.type == 2">
+                            <i class="pi pi-info-circle product-offer-icon"></i>
+                            <span class="product-offer">{{product.price.descriptionType}}</span>
+                        </div>
+                    </div>
+                    <div class="product-grid-item-content cursor-pointer">
+                        <img [src]="product.image" [alt]="product.name" (click)="onClickDetail(product.productId)" />
+                        <div class="product-name">{{product.name}}</div>
+                        <div class="product-description">{{product.detail}}</div>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">S/. {{product.price.price}}</span>
+                        <p-button icon="pi pi-shopping-cart" [disabled]="product.initialReal === 0"
+                            (click)="showConfirmProduct(product.productId)">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+<p-dialog [header]="modalProductName" [(visible)]="displayProductConfirm" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <div class="row">
+        <div class="col s6">
+            <img [src]="modalProductImage" style="width: 100%; height: 260px; display: block;" />
+        </div>
+        <div class="col s6">
+            <div class="row">
+                <span>{{ modalProductDescription }}</span>
+            </div>
+            <div class="row">
+                <h1>S/. {{ modalProductPrice }}</h1>
+            </div>
+            <div class="row">
+                <p-inputNumber [formControl]="modalCounterOrder" mode="decimal" [showButtons]="true"
+                    inputId="minmax-buttons" [min]="0" [max]="10">
+                </p-inputNumber>
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Agregar al carrito" class="p-button-danger p-mr-2"
+            icon="pi pi-shopping-cart" iconPos="left" (click)="onAddToShoppingBag()"></button>
+    </ng-template>
+</p-dialog>
